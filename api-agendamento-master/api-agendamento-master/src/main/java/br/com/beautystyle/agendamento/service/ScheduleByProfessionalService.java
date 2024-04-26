@@ -47,7 +47,7 @@ public class ScheduleByProfessionalService {
         return new ScheduleByProfessionalDto(blockTimes, events);
     }
 
-    public ScheduleDto insert(ScheduleByProfessionalForm eventForm) {
+    public EventDto insert(ScheduleByProfessionalForm eventForm) {
 
         Long tenant = tokenServices.getTenant(request);
 
@@ -58,16 +58,16 @@ public class ScheduleByProfessionalService {
         ResponseEntity<?> responseEntityStatusConflict = eventTimeService.checkEventTimeIsAvailable(
                 schedule, schedule.getDate());
         if (responseEntityStatusConflict != null)
-            return (ScheduleDto) responseEntityStatusConflict.getBody();
+            return (EventDto) responseEntityStatusConflict.getBody();
 
-        ScheduleDto scheduleDto = new ScheduleDto(scheduleService.save(schedule));
+        EventDto eventDto = new EventDto(scheduleService.save(schedule));
 
-        return responseEntityStatusCreated(scheduleDto);
+        return responseEntityStatusCreated(eventDto);
 
     }
 
-    private ScheduleDto responseEntityStatusCreated(ScheduleDto scheduleDto) {
-        return scheduleDto;
+    private EventDto responseEntityStatusCreated(EventDto eventDto) {
+        return eventDto;
     }
 
     public ResponseEntity<?> update(ScheduleByProfessionalForm eventForm, Long id) {

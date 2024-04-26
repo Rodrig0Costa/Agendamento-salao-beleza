@@ -1,7 +1,7 @@
 package br.com.beautystyle.agendamento.controller;
 
 import br.com.beautystyle.agendamento.controller.dto.ScheduleByProfessionalDto;
-import br.com.beautystyle.agendamento.controller.dto.ScheduleDto;
+import br.com.beautystyle.agendamento.controller.dto.EventDto;
 import br.com.beautystyle.agendamento.controller.form.ScheduleByProfessionalForm;
 import br.com.beautystyle.agendamento.service.ScheduleByProfessionalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class ScheduleByProfessionalController {
 
     @PostMapping
     @Transactional
-    public ScheduleDto insert(@RequestBody @Valid ScheduleByProfessionalForm eventForm) {
+    public EventDto insert(@RequestBody @Valid ScheduleByProfessionalForm eventForm) {
         return scheduleService.insert(eventForm);
     }
 
