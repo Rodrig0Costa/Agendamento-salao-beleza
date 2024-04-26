@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/fragment_list_client_sv"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="8dp"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toStartOf="@id/fragment_list_cliente_btn_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Nome" />
+
+    <ImageButton
+        android:id="@+id/fragment_list_client_import"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:srcCompat="@drawable/ic_import"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_list_client_sv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fragment_list_client_sv" />
+
+    <ImageButton
+        android:id="@+id/fragment_list_cliente_btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_list_client_sv"
+        app:layout_constraintEnd_toStartOf="@id/fragment_list_client_import"
+        app:layout_constraintTop_toTopOf="@+id/fragment_list_client_sv"
+        app:srcCompat="@drawable/ic_add" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_list_cliente_rv"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_list_client_progress_bar" />
+    <ProgressBar
+        android:id="@+id/fragment_list_client_progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/black"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_list_client_sv"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

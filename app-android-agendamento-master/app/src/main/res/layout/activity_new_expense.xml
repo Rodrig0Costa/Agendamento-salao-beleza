@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/activity_new_expense_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/expense_date"
+        app:layout_constraintStart_toStartOf="@id/activity_new_expense_date"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/activity_new_expense_date"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/custom_default_input"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="date"
+        android:longClickable="false"
+        android:padding="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/activity_new_expense_category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_new_expense_tv"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/activity_new_expense_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/category"
+        app:layout_constraintStart_toStartOf="@id/activity_new_expense_category"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/activity_new_expense_category"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/custom_default_input"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="date"
+        android:longClickable="false"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@+id/activity_new_expense_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_new_expense_date"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/activity_new_expense_tv2_tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/description"
+        app:layout_constraintStart_toStartOf="@id/activity_new_expense_date"
+        app:layout_constraintTop_toBottomOf="@id/activity_new_expense_date" />
+
+    <EditText
+        android:id="@+id/activity_new_expense_list_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_margin="8dp"
+        android:divider="@android:color/transparent"
+        android:background="@drawable/custom_default_input"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_new_expense_tv2_tv3"
+        />
+
+    <TextView
+        android:id="@+id/activity_new_expense_tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/total_value"
+        app:layout_constraintStart_toStartOf="@+id/activity_new_expense_list_view"
+        app:layout_constraintTop_toBottomOf="@+id/activity_new_expense_list_view" />
+
+    <EditText
+        android:id="@+id/activity_new_expense_value"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/custom_default_input"
+        android:inputType="number"
+        android:padding="8dp"
+        android:text="@string/default_coin_value"
+        app:layout_constraintEnd_toStartOf="@+id/activity_new_expense_do_not_repeat"
+        app:layout_constraintStart_toStartOf="@id/activity_new_expense_tv4"
+        app:layout_constraintTop_toBottomOf="@id/activity_new_expense_tv4"
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/activity_new_expense_save"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/save"
+       app:layout_constraintStart_toStartOf="@+id/activity_new_expense_value"
+        app:layout_constraintTop_toBottomOf="@+id/activity_new_expense_value" />
+
+    <CheckBox
+        android:id="@+id/activity_new_expense_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/repeat"
+        app:layout_constraintStart_toStartOf="@+id/activity_new_expense_do_not_repeat"
+        app:layout_constraintTop_toBottomOf="@+id/activity_new_expense_list_view" />
+
+    <CheckBox
+        android:id="@+id/activity_new_expense_do_not_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/do_not_repeat"
+        app:layout_constraintEnd_toEndOf="@+id/activity_new_expense_list_view"
+        app:layout_constraintTop_toBottomOf="@id/activity_new_expense_repeat" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
