@@ -9,4 +9,7 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 
     List<Category> findByTenant(Long id);
+
+    Category findByTenantAndName(Long id, String name);
+
 }

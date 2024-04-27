@@ -125,9 +125,9 @@ public class CategoryListFragment extends DialogFragment {
     }
 
     private void itemClickListener() {
-        adapterCategories.setOnItemClickListener(categoryName -> {
+        adapterCategories.setOnItemClickListener(category -> {
             Bundle result = new Bundle();
-            result.putString(KEY_NAME_CATEGORY, categoryName);
+            result.putString(KEY_NAME_CATEGORY, category.getName());
             getParentFragmentManager().setFragmentResult(KEY_RESULT_CATEGORY, result);
             Objects.requireNonNull(getDialog()).dismiss();
         });
