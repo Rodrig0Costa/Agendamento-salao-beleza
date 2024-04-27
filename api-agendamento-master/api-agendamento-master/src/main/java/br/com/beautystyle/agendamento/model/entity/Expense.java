@@ -33,12 +33,12 @@ public class Expense {
     public Expense() {
     }
 
-    public Expense(ExpenseForm expenseForm) {
+    public Expense(ExpenseForm expenseForm, Category category) {
         this.description = expenseForm.getDescription();
         this.value = expenseForm.getValue();
         this.date = expenseForm.getExpenseDate();
-        this.category = new Category(expenseForm.getCategoryId());
-        this.repeat = expenseForm.isRepeatOrNot();
+        this.category = category;
+        this.repeat = expenseForm.isRepeat();
         this.tenant = expenseForm.getTenant();
     }
 

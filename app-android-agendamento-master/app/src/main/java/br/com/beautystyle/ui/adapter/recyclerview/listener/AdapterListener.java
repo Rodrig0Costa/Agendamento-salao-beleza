@@ -24,7 +24,7 @@ public class AdapterListener {
     }
 
     public interface OnCategoryClickListener {
-        void onItemClick(String name);
+        void onItemClick(Category category);
     }
 
     public interface OnCategoryLongClickListener {

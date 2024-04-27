@@ -72,7 +72,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             super(itemView);
             nameCategory = itemView.findViewById(android.R.id.text1);
 
-            itemView.setOnClickListener(v -> onItemClickListener.onItemClick(category.getName()));
+            itemView.setOnClickListener(v -> onItemClickListener.onItemClick(category));
             itemView.setOnCreateContextMenuListener(this);
             itemView.setOnLongClickListener(v -> onItemLongClickListener.onItemClick(category));
 

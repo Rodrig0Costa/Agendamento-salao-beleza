@@ -17,9 +17,9 @@ public class ExpenseForm {
     @NotNull
     private LocalDate expenseDate;
     @NotNull
-    private Long categoryId;
+    private String category;
     @NotNull
-    private boolean repeatOrNot;
+    private boolean repeat;
     @JsonIgnore
     private Long tenant;
 
@@ -50,20 +50,20 @@ public class ExpenseForm {
         this.expenseDate = expenseDate;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public boolean isRepeatOrNot() {
-        return repeatOrNot;
+    public boolean isRepeat() {
+        return repeat;
     }
 
-    public void setRepeatOrNot(boolean repeatOrNot) {
-        this.repeatOrNot = repeatOrNot;
+    public void setRepeat(boolean repeat) {
+        this.repeat = repeat;
     }
 
     public Long getTenant() {
@@ -74,13 +74,13 @@ public class ExpenseForm {
         this.tenant = tenant;
     }
 
-    public Expense update(ExpenseRepository expenseRepository, Long id) {
+    public Expense update(ExpenseRepository expenseRepository, Long id, Category category) {
         Expense expense = expenseRepository.getById(id);
         expense.setDate(this.expenseDate);
         expense.setValue(this.value);
         expense.setDescription(this.description);
-        expense.setCategory(new Category(this.getCategoryId()));
-        expense.setRepeat(this.repeatOrNot);
+        expense.setCategory(category);
+        expense.setRepeat(this.repeat);
         return expense;
     }
 }

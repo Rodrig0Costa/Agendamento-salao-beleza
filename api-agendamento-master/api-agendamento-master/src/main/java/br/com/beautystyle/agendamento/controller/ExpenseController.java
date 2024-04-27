@@ -4,8 +4,10 @@ import br.com.beautystyle.agendamento.config.security.TokenServices;
 import br.com.beautystyle.agendamento.controller.dto.ExpenseDto;
 import br.com.beautystyle.agendamento.controller.exceptions.TenantNotEqualsException;
 import br.com.beautystyle.agendamento.controller.form.ExpenseForm;
+import br.com.beautystyle.agendamento.model.entity.Category;
 import br.com.beautystyle.agendamento.model.entity.Expense;
 import br.com.beautystyle.agendamento.repository.ExpenseRepository;
+import br.com.beautystyle.agendamento.repository.CategoryRepository;
 import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -35,6 +37,8 @@ public class ExpenseController {
 
     @Autowired
     private ExpenseRepository expenseRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
     @Autowired
     private TokenServices tokenServices;
 
@@ -71,7 +75,8 @@ public class ExpenseController {
                                     HttpServletRequest request) {
         Long tenant = tokenServices.getTenant(request);
         expenseForm.setTenant(tenant);
-        Expense savedExpense = expenseRepository.save(new Expense(expenseForm));
+        Category category = categoryRepository.findByTenantAndName(tenant, expenseForm.getCategory());
+        Expense savedExpense = expenseRepository.save(new Expense(expenseForm, category));
         URI uri = uriBuilder.path("/expense/{id}")
                 .buildAndExpand(savedExpense.getId())
                 .toUri();
@@ -89,7 +94,8 @@ public class ExpenseController {
             Long tenant = tokenServices.getTenant(request);
             if (optionalExpense.get().isTenantNotEquals(tenant))
                 throw new TenantNotEqualsException(TENANT_NOT_EQUALS);
-            Expense expenseUpdated = expenseForm.update(expenseRepository, id);
+            Category category = categoryRepository.findByTenantAndName(tenant, expenseForm.getCategory());
+            Expense expenseUpdated = expenseForm.update(expenseRepository, id, category);
             return ResponseEntity.ok(new ExpenseDto(expenseUpdated));
         }
         throw new EntityNotFoundException(ENTITY_NOT_FOUND);
